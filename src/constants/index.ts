@@ -1,1 +1,0 @@
-export const limitItems: number = 20;

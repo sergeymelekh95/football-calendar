@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { limitItems } from '../../constants';
 import { ServerResponseItems } from '../../models';
 
 export const footballCalendarApi = createApi({
@@ -12,7 +11,7 @@ export const footballCalendarApi = createApi({
 			query: (offset: number) => ({
 				url: 'seasons/5099/calendar_paginated',
 				params: {
-					limit: limitItems,
+					limit: process.env.REACT_APP_LIMIT,
 					offset,
 				},
 			}),
