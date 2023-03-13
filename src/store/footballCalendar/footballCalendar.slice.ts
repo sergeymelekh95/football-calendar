@@ -2,20 +2,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Item } from '../../models';
 
 interface footballCalendarState {
-	// items: Item | [];
+	items: Item[];
 }
 
 const initialState: footballCalendarState = {
-	// items: [],
+	items: [],
 };
 
 export const footballCalendarSlice = createSlice({
 	name: 'footballCalendar',
 	initialState,
 	reducers: {
-		// setFromState(state, action: PayloadAction<FieldData[]>) {
-		// 	state.formState = action.payload;
-		// },
+		setItems(state, action: PayloadAction<Item[]>) {
+			state.items = [...state.items, ...action.payload];
+		},
 	},
 });
 
