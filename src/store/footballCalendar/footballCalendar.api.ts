@@ -5,7 +5,7 @@ export const footballCalendarApi = createApi({
 	reducerPath: 'footballCalendar/api',
 	baseQuery: fetchBaseQuery({
 		// https://footballista.ru/api/seasons/5099/calendar_paginated?limit=10&offset=0
-		baseUrl: 'https://footballista.ru/api/',
+		baseUrl: process.env.REACT_APP_BASE_URL,
 	}),
 	endpoints: (build) => ({
 		getItems: build.query<Item[], void>({
