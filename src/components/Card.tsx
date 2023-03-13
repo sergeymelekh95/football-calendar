@@ -9,6 +9,7 @@ import { CardHeader } from '@mui/material';
 import { Item } from '../models';
 import { Box } from '@mui/system';
 import { addZero } from '../helpers';
+import { useDate } from '../hooks/useDate';
 interface IMyCard {
 	item: Item;
 }
@@ -16,12 +17,9 @@ interface IMyCard {
 export const MyCard: React.FC<IMyCard> = ({ item }) => {
 	const { tourNumber, teamHome, teamAway, date: isoDate } = item;
 
-	const date = new Date(isoDate);
-	const year: number = date.getFullYear();
-	const month: number = date.getMonth() + 1;
-	const day: number = date.getDay();
-	const hours: number = date.getHours();
-	const minutes: number = date.getMinutes();
+	const matchDate: Date = new Date(isoDate);
+
+	const { year, month, day, minutes, hours } = useDate(matchDate);
 
 	return (
 		<Card>
