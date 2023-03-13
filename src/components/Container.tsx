@@ -6,5 +6,5 @@ interface IContainer {
 }
 
 export const Container: React.FC<IContainer> = ({ children }) => {
-	return <MuiContainer sx={{ paddingBottom: 4 }}>{children}</MuiContainer>;
+	return <MuiContainer>{children}</MuiContainer>;
 };

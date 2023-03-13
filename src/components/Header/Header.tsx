@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AppBar, Toolbar, Typography } from '@mui/material';
+import { Container } from '../Container';
 
-interface IHeader {}
-
-export const Header: React.FC<IHeader> = () => {
+export const Header: React.FC = memo(() => {
 	return (
 		<AppBar position='static'>
-			<Toolbar>
-				<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-					Football calendar
-				</Typography>
-			</Toolbar>
+			<Container>
+				<Toolbar style={{ padding: 0 }}>
+					<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+						Football calendar
+					</Typography>
+				</Toolbar>
+			</Container>
 		</AppBar>
 	);
-};
+});

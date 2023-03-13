@@ -1,17 +1,35 @@
+import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Toolbar } from '@mui/material';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/system';
-import * as React from 'react';
+import { Box, styled } from '@mui/system';
 import { addZero } from '../../helpers';
 import { useDate } from '../../hooks/useDate';
 import { Item } from '../../models';
 import { Participant } from './Participant';
+import { CSSProperties } from '@mui/styled-engine';
 
 interface IMyCard {
 	item: Item;
 }
+
+const StyledBox = styled('div')({
+	display: 'flex',
+	justifyContent: 'space-between',
+	alignItems: 'center',
+});
+
+const StyledCenteredBox = styled('div')({
+	textAlign: 'center',
+});
+
+const cardStyles: CSSProperties = {
+	padding: 1,
+	minHeight: '201px',
+	display: 'flex',
+	justifyContent: 'space-between',
+	flexDirection: 'column',
+};
 
 export const MyCard: React.FC<IMyCard> = ({ item }) => {
 	const {
@@ -30,60 +48,46 @@ export const MyCard: React.FC<IMyCard> = ({ item }) => {
 	const { year, month, day, minutes, hours } = useDate(matchDate);
 
 	return (
-		<Card
-			sx={{
-				padding: 1,
-				minHeight: '201px',
-				display: 'flex',
-				justifyContent: 'space-between',
-				flexDirection: 'column',
-			}}
-		>
-			<Box sx={{ marginBottom: 1.5 }}>
+		<Card sx={cardStyles}>
+			<Box sx={{ mb: 1.5 }}>
 				<Typography sx={{ fontSize: 12 }} color='text.primary'>
 					{`${champ.name}`}
 					<ArrowForwardIosIcon sx={{ fontSize: 8, margin: '0 8px' }} />
 					{`Номер турнира: ${tourNumber}`}
 				</Typography>
 			</Box>
-			<Box style={{ textAlign: 'center' }}>
+			<StyledCenteredBox>
 				<Typography sx={{ fontSize: 14 }} color='text.secondary'>
 					{addZero(day)}.{addZero(month)}.{year} {addZero(hours)}:
 					{addZero(minutes)}
 				</Typography>
-			</Box>
-			<Box
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-				}}
-			>
+			</StyledCenteredBox>
+			<StyledBox>
 				<Participant
 					logo={teamHome.logo}
 					logoId={teamHome.logoId}
 					name={teamHome.name}
 				/>
-				<Box style={{ textAlign: 'center' }}>
+				<StyledCenteredBox>
 					<Typography
 						sx={{ fontSize: 32 }}
 					>{`${scoreFtHome} - ${scoreFtAway}`}</Typography>
 					<Typography sx={{ fontSize: 12 }}>Завершен</Typography>
-				</Box>
+				</StyledCenteredBox>
 				<Participant
 					logo={teamAway.logo}
 					logoId={teamAway.logoId}
 					name={teamAway.name}
 				/>
-			</Box>
-			<Box style={{ textAlign: 'center' }}>
+			</StyledBox>
+			<StyledCenteredBox>
 				<Typography
 					sx={{ fontSize: 12 }}
 					color='text.secondary'
 				>{`Название стадиона - ${
-					stadium?.name ? stadium.name : 'неизветсно'
+					stadium?.name ? stadium.name : 'неизвестно'
 				}`}</Typography>
-			</Box>
+			</StyledCenteredBox>
 		</Card>
 	);
 };

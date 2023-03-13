@@ -56,21 +56,21 @@ export const App: React.FC = () => {
 			<Header />
 			{isFetchingItems && <LinearProgress color='success' />}
 			{isErrorItems && (
-				<Alert sx={{ marginTop: 2 }} severity='error'>
+				<Alert sx={{ mt: 2 }} severity='error'>
 					Что-то пошло не так
 				</Alert>
 			)}
 			<Container>
 				{!isErrorItems && !!items?.length && (
-					<div>
-						<Grid container spacing={4} sx={{ marginTop: 2 }}>
+					<Box sx={{ mb: 4 }}>
+						<Grid container spacing={4} sx={{ mt: 2 }}>
 							{items.map((item: Item) => (
 								<Grid key={item._id} item xs={12} sm={6} md={4}>
 									<MyCard item={item} />
 								</Grid>
 							))}
 						</Grid>
-						<Box sx={{ textAlign: 'center', marginTop: 4 }}>
+						<Box sx={{ textAlign: 'center', mt: 4 }}>
 							<LoadingButton
 								disabled={disabled}
 								loading={isFetchingItems}
@@ -80,7 +80,7 @@ export const App: React.FC = () => {
 								Загрузить еще
 							</LoadingButton>
 						</Box>
-					</div>
+					</Box>
 				)}
 			</Container>
 		</>
