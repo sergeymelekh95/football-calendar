@@ -1,4 +1,5 @@
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Toolbar } from '@mui/material';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
@@ -29,7 +30,15 @@ export const MyCard: React.FC<IMyCard> = ({ item }) => {
 	const { year, month, day, minutes, hours } = useDate(matchDate);
 
 	return (
-		<Card sx={{ padding: 1 }}>
+		<Card
+			sx={{
+				padding: 1,
+				minHeight: '201px',
+				display: 'flex',
+				justifyContent: 'space-between',
+				flexDirection: 'column',
+			}}
+		>
 			<Box sx={{ marginBottom: 1.5 }}>
 				<Typography sx={{ fontSize: 12 }} color='text.primary'>
 					{`${champ.name}`}
@@ -66,6 +75,14 @@ export const MyCard: React.FC<IMyCard> = ({ item }) => {
 					logoId={teamAway.logoId}
 					name={teamAway.name}
 				/>
+			</Box>
+			<Box style={{ textAlign: 'center' }}>
+				<Typography
+					sx={{ fontSize: 12 }}
+					color='text.secondary'
+				>{`Название стадиона - ${
+					stadium?.name ? stadium.name : 'неизветсно'
+				}`}</Typography>
 			</Box>
 		</Card>
 	);
