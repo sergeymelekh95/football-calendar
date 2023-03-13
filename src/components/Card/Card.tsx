@@ -48,7 +48,7 @@ export const Card: React.FC<IMyCard> = ({ item }) => {
 				<Typography sx={{ fontSize: 12 }} color='text.primary'>
 					{`${champ.name}`}
 					<ArrowForwardIosIcon sx={{ fontSize: 8, margin: '0 8px' }} />
-					{`Номер турнира: ${tourNumber}`}
+					{`Номер тура: ${tourNumber}`}
 				</Typography>
 			</Box>
 			<StyledCenteredBox>
