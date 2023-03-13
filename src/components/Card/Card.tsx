@@ -75,10 +75,7 @@ export const Card: React.FC<IMyCard> = ({ item }) => {
 				/>
 			</StyledBox>
 			<StyledCenteredBox>
-				<Typography
-					sx={{ fontSize: 12 }}
-					color='text.secondary'
-				>{`Название стадиона - ${
+				<Typography sx={{ fontSize: 12 }} color='text.secondary'>{`Cтадион - ${
 					stadium?.name ? stadium.name : 'неизвестно'
 				}`}</Typography>
 			</StyledCenteredBox>
