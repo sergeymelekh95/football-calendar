@@ -13,7 +13,7 @@ import { Item } from './models';
 
 export const App: React.FC = () => {
 	const [offset, setOffset] = useState<number>(0);
-	const [disabled, setDisabled] = useState(false);
+	const [disabled, setDisabled] = useState<boolean>(false);
 	const { items } = useAppSelector((state) => state.footballCalendar);
 	const { setItems } = useActions();
 
@@ -22,7 +22,7 @@ export const App: React.FC = () => {
 		{ isFetching: isFetchingItems, data, isError: isErrorItems },
 	] = useLazyGetItemsQuery();
 
-	const handleClick = () => {
+	const handleClick = (): void => {
 		if (data && items.length < data.total) {
 			setOffset(offset + limitItems);
 		}
@@ -35,7 +35,6 @@ export const App: React.FC = () => {
 	}, [offset]);
 
 	useEffect(() => {
-		console.log('render', data);
 		if (data) {
 			setItems(data.items);
 		}
