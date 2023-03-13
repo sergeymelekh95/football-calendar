@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Grid, LinearProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { MyCard } from './components/Card/Card';
+import { Card } from './components/Card/Card';
 import { useLazyGetItemsQuery } from './store/footballCalendar/footballCalendar.api';
 import { useActions } from './hooks/useActions';
 import { useAppSelector } from './hooks/redux';
@@ -65,7 +65,7 @@ export const App: React.FC = () => {
 						<Grid container spacing={4} sx={{ mt: 2 }}>
 							{items.map((item: Item) => (
 								<Grid key={item._id} item xs={12} sm={6} md={4}>
-									<MyCard item={item} />
+									<Card item={item} />
 								</Grid>
 							))}
 						</Grid>

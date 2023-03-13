@@ -14,7 +14,7 @@ const StyledParticipant = styled('div')({
 	justifyContent: 'center',
 	alignItems: 'center',
 	textAlign: 'center',
-	maxWidth: 50,
+	width: '75px',
 });
 
 export const Participant: React.FC<IParticipant> = memo(

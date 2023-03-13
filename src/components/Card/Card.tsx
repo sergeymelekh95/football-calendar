@@ -1,7 +1,6 @@
 import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
+import { Card as MuiCard, Typography } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import { addZero } from '../../helpers';
 import { useDate } from '../../hooks/useDate';
@@ -24,14 +23,14 @@ const StyledCenteredBox = styled('div')({
 });
 
 const cardStyles: CSSProperties = {
-	padding: 1,
-	minHeight: '201px',
 	display: 'flex',
 	justifyContent: 'space-between',
 	flexDirection: 'column',
+	padding: 1,
+	minHeight: '201px',
 };
 
-export const MyCard: React.FC<IMyCard> = ({ item }) => {
+export const Card: React.FC<IMyCard> = ({ item }) => {
 	const {
 		tourNumber,
 		teamHome,
@@ -48,7 +47,7 @@ export const MyCard: React.FC<IMyCard> = ({ item }) => {
 	const { year, month, day, minutes, hours } = useDate(matchDate);
 
 	return (
-		<Card sx={cardStyles}>
+		<MuiCard sx={cardStyles}>
 			<Box sx={{ mb: 1.5 }}>
 				<Typography sx={{ fontSize: 12 }} color='text.primary'>
 					{`${champ.name}`}
@@ -88,6 +87,6 @@ export const MyCard: React.FC<IMyCard> = ({ item }) => {
 					stadium?.name ? stadium.name : 'неизвестно'
 				}`}</Typography>
 			</StyledCenteredBox>
-		</Card>
+		</MuiCard>
 	);
 };
