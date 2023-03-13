@@ -2,8 +2,6 @@ import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Card as MuiCard, Typography } from '@mui/material';
 import { Box, styled } from '@mui/system';
-import { addZero } from '../../helpers';
-import { useDate } from '../../hooks/useDate';
 import { Item } from '../../models';
 import { Participant } from './Participant';
 import { CSSProperties } from '@mui/styled-engine';
@@ -44,8 +42,6 @@ export const Card: React.FC<IMyCard> = ({ item }) => {
 
 	const matchDate: Date = new Date(isoDate);
 
-	const { year, month, day, minutes, hours } = useDate(matchDate);
-
 	return (
 		<MuiCard sx={cardStyles}>
 			<Box sx={{ mb: 1.5 }}>
@@ -57,8 +53,7 @@ export const Card: React.FC<IMyCard> = ({ item }) => {
 			</Box>
 			<StyledCenteredBox>
 				<Typography sx={{ fontSize: 14 }} color='text.secondary'>
-					{addZero(day)}.{addZero(month)}.{year} {addZero(hours)}:
-					{addZero(minutes)}
+					{matchDate.toLocaleDateString()}
 				</Typography>
 			</StyledCenteredBox>
 			<StyledBox>

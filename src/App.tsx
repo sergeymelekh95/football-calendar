@@ -6,10 +6,11 @@ import { Card } from './components/Card/Card';
 import { useLazyGetItemsQuery } from './store/footballCalendar/footballCalendar.api';
 import { useActions } from './hooks/useActions';
 import { useAppSelector } from './hooks/redux';
-import { limitItems } from './constants';
 import { Header } from './components/Header/Header';
 import { Container } from './components/Container';
 import { Item } from './models';
+
+const limit = process.env.REACT_APP_LIMIT;
 
 export const App: React.FC = () => {
 	const [offset, setOffset] = useState<number>(0);
@@ -23,8 +24,8 @@ export const App: React.FC = () => {
 	] = useLazyGetItemsQuery();
 
 	const handleClick = (): void => {
-		if (data && items.length < data.total) {
-			setOffset(offset + limitItems);
+		if (data && limit && items.length < data.total) {
+			setOffset(offset + +limit);
 		}
 	};
 
